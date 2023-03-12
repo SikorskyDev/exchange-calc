@@ -27,9 +27,9 @@ export default function Modal({ children, title }) {
                     <div onClick={toggleModal} className={stl.overlay}></div>
                     <div className={stl.modalContent}>
                         {children}
-                        <button className={stl.closeModal} onClick={toggleModal}>
-                            <AiOutlineClose size={35} />
-                        </button>
+                        <div className={stl.closeModal} onClick={toggleModal} >
+                            <AiOutlineClose size={20} />
+                        </div>
                     </div>
                 </div>
             )}
