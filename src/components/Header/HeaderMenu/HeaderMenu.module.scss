@@ -1,0 +1,57 @@
+.menu {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 15px;
+    white-space: nowrap;
+
+    &__item {
+        :hover {
+            color: #b1aeae;
+        }
+    }
+
+    .exchange {
+        position: relative;
+        z-index: 2;
+        .currenValue {
+            color: green;
+            position: absolute;
+            font-size: 10px;
+            display: flex;
+            width: 127px;
+            justify-content: space-between;
+            gap: 5px;
+            z-index: 2;
+        }
+    }
+}
+
+@media (max-width: 690px) {
+    .menu {
+        flex-direction: column;
+        justify-content: flex-start;
+        text-align: center;
+        row-gap: 20px;
+        .menu__item {
+            .menu__link {
+                font-size: 32px;
+            }
+        }
+    }
+    .exchange {
+        position: relative;
+        .currenValue {
+            position: absolute;
+            left: 60px;
+            color: green;
+            position: absolute;
+            font-size: 10px;
+            display: flex;
+            width: 127px;
+            justify-content: space-between;
+            gap: 5px;
+        }
+    }
+}

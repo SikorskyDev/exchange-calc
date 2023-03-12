@@ -1,0 +1,59 @@
+.root {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    top: 15px;
+    input[type="number"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: #fff;
+        color: #333;
+        width: 120px;
+    }
+    select {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: #fff;
+        color: #333;
+        cursor: pointer;
+    }
+
+    select option {
+        padding: 8px;
+        background-color: #fff;
+        color: #333;
+    }
+    .converter {
+        height: 100%;
+        .title {
+            white-space: normal;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 5px;
+            color: black;
+        }
+        .subTitle{
+            font-size: 12px;
+            text-align: center;
+            color: #787878;
+            margin-bottom: 10px;
+        }
+        .inputsContainer {
+            height: 100%;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 30px;
+            .item{
+                display: flex;
+                gap: 10px;
+            }
+        }
+    }
+}
