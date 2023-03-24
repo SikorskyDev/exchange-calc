@@ -5,10 +5,10 @@ import Modal from '../../Modal/Modal';
 import stl from './HeaderMenu.module.scss';
 
 function HeaderMenu() {
-    // отримую від НБУ список валют
+    // отримую від НБУ масив об'єктів валют
     const { data, isSuccess, isLoading, isError } = useGetCurrencyRateQuery();
 
-    //витягую потрібні валюти у змінні
+    // Перевіряю чи отримано та присвоюю масив об'єктів валют у змінну
     const allCurrency = isSuccess && data;
 
     return (
