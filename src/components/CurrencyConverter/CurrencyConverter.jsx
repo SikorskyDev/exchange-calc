@@ -9,8 +9,8 @@ function CurrencyConverter({ isSuccess, isLoading, isError, allCurrency }) {
     const [activeInput, setActiveInput] = useState(null);
 
     // Контрольовані інпути та селекти
-    const [inputFirst, setInputFirst] = useState("");
-    const [inputSecond, setInputSecond] = useState("");
+    const [inputFirst, setInputFirst] = useState(0);
+    const [inputSecond, setInputSecond] = useState(0);
     const [selectFirst, setSelectFirst] = useState('UAH');
     const [selectSecond, setSelectSecond] = useState('USD');
 
@@ -41,30 +41,28 @@ function CurrencyConverter({ isSuccess, isLoading, isError, allCurrency }) {
 
     // Функція обрахунку курсів валют. Код написаний так, щоб мені потрібно лише отримати відношення курсу гривні до інших валют.
     const calculateCurr = React.useCallback((activeInput, selectFirst, selectSecond) => {
+        const selectedFirstRate = selectedCurrency.find((obj) => obj.cc === selectFirst).rate;
+        const selectedSecondRate = selectedCurrency.find((obj) => obj.cc === selectSecond).rate;
         if (activeInput === "first") {
             if (selectFirst === selectSecond) {
                 setInputSecond(Number(inputFirst).toFixed(2))
             } else if (selectFirst === "UAH") {
-                const rate = selectedCurrency.find((obj) => obj.cc === selectSecond).rate;
-                setInputSecond((Number(inputFirst) / rate).toFixed(2))
+                setInputSecond((Number(inputFirst) / selectedSecondRate).toFixed(2))
             } else if (selectSecond === "UAH") {
-                const rate = selectedCurrency.find((obj) => obj.cc === selectFirst).rate;
-                setInputSecond((Number(inputFirst) * rate).toFixed(2))
+                setInputSecond((Number(inputFirst) * selectedFirstRate).toFixed(2))
             } else {
-                const rate = selectedCurrency.find((obj) => obj.cc === selectFirst).rate / selectedCurrency.find((obj) => obj.cc === selectSecond).rate
+                const rate = selectedFirstRate / selectedSecondRate
                 setInputSecond((Number(inputFirst) * rate).toFixed(2))
             }
         } else {
             if (selectFirst === selectSecond) {
                 setInputFirst(Number(inputSecond).toFixed(2))
             } else if (selectFirst === "UAH") {
-                const rate = selectedCurrency.find((obj) => obj.cc === selectSecond).rate;
-                setInputFirst((Number(inputSecond) * rate).toFixed(2))
+                setInputFirst((Number(inputSecond) * selectedSecondRate).toFixed(2))
             } else if (selectSecond === "UAH") {
-                const rate = selectedCurrency.find((obj) => obj.cc === selectFirst).rate;
-                setInputFirst((Number(inputSecond) / rate).toFixed(2))
+                setInputFirst((Number(inputSecond) / selectedFirstRate).toFixed(2))
             } else {
-                const rate = selectedCurrency.find((obj) => obj.cc === selectSecond).rate / selectedCurrency.find((obj) => obj.cc === selectFirst).rate
+                const rate = selectedSecondRate / selectedFirstRate
                 setInputFirst((Number(inputSecond) * rate).toFixed(2))
             }
         }
