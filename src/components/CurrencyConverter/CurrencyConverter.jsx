@@ -34,7 +34,7 @@ function CurrencyConverter({ isSuccess, isLoading, isError, allCurrency }) {
 
     // Створюю масив об*єктів із необхідними курсами валют. В умові, яку мені написала Катерина https://t.me/k_rinet_ta, для додання нових валют має бути тільки одне місце в коді. Ось тут це місце. Для того, щоб додати нову валюту необхідно в умову allCurrency.filter додати obj.cc === "умовне позначення валюти"
     const selectedCurrency = React.useMemo(() => {
-        const filteredCurrency = allCurrency.filter((obj) => obj.cc === "USD" || obj.cc === "EUR" || obj.cc === "PLN" || obj.cc === "MDL" || obj.cc === "XAU");
+        const filteredCurrency = allCurrency.filter((obj) => obj.cc === "USD" || obj.cc === "EUR" || obj.cc === "PLN" || obj.cc === "MDL" || obj.cc === "GBP");
         return [...filteredCurrency, { cc: "UAH", rate: 1 }];
     }, [allCurrency]);
 
